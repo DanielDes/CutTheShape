@@ -10,7 +10,7 @@
 		C19C322F274CC5C200DE57F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C322E274CC5C200DE57F2 /* AppDelegate.swift */; };
 		C19C3231274CC5C200DE57F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C3230274CC5C200DE57F2 /* SceneDelegate.swift */; };
 		C19C3233274CC5C200DE57F2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C3232274CC5C200DE57F2 /* GameViewController.swift */; };
-		C19C3236274CC5C200DE57F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C19C3234274CC5C200DE57F2 /* Main.storyboard */; };
+		C19C3236274CC5C200DE57F2 /* GameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C19C3234274CC5C200DE57F2 /* GameViewController.storyboard */; };
 		C19C3238274CC5C800DE57F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C19C3237274CC5C800DE57F2 /* Assets.xcassets */; };
 		C19C323B274CC5C800DE57F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C19C3239274CC5C800DE57F2 /* LaunchScreen.storyboard */; };
 		C19C324B274CC93F00DE57F2 /* GamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C324A274CC93F00DE57F2 /* GamePresenter.swift */; };
@@ -18,6 +18,7 @@
 		C19C3250274CC96400DE57F2 /* GameLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C324F274CC96400DE57F2 /* GameLocalDataManager.swift */; };
 		C19C3252274CC97000DE57F2 /* GameInteractor .swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C3251274CC97000DE57F2 /* GameInteractor .swift */; };
 		C19C3255274CC98100DE57F2 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C3254274CC98100DE57F2 /* GameRouter.swift */; };
+		C19C3258274CDBF000DE57F2 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C3257274CDBF000DE57F2 /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +26,7 @@
 		C19C322E274CC5C200DE57F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C19C3230274CC5C200DE57F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C19C3232274CC5C200DE57F2 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		C19C3235274CC5C200DE57F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C19C3235274CC5C200DE57F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GameViewController.storyboard; sourceTree = "<group>"; };
 		C19C3237274CC5C800DE57F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C19C323A274CC5C800DE57F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C19C323C274CC5C800DE57F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,6 +35,7 @@
 		C19C324F274CC96400DE57F2 /* GameLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLocalDataManager.swift; sourceTree = "<group>"; };
 		C19C3251274CC97000DE57F2 /* GameInteractor .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameInteractor .swift"; sourceTree = "<group>"; };
 		C19C3254274CC98100DE57F2 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
+		C19C3257274CDBF000DE57F2 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				C19C3246274CC89D00DE57F2 /* Protocols */,
+				C19C3256274CDBD100DE57F2 /* Entities */,
 				C19C3249274CC8B700DE57F2 /* Router */,
 				C19C3248274CC8AF00DE57F2 /* Interactor */,
 				C19C3247274CC8A300DE57F2 /* DataManagers */,
@@ -100,7 +103,7 @@
 		C19C3244274CC88E00DE57F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C19C3234274CC5C200DE57F2 /* Main.storyboard */,
+				C19C3234274CC5C200DE57F2 /* GameViewController.storyboard */,
 				C19C3232274CC5C200DE57F2 /* GameViewController.swift */,
 			);
 			path = View;
@@ -152,6 +155,14 @@
 				C19C324F274CC96400DE57F2 /* GameLocalDataManager.swift */,
 			);
 			path = LocalDataManager;
+			sourceTree = "<group>";
+		};
+		C19C3256274CDBD100DE57F2 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C19C3257274CDBF000DE57F2 /* GameViewModel.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,7 +225,7 @@
 			files = (
 				C19C323B274CC5C800DE57F2 /* LaunchScreen.storyboard in Resources */,
 				C19C3238274CC5C800DE57F2 /* Assets.xcassets in Resources */,
-				C19C3236274CC5C200DE57F2 /* Main.storyboard in Resources */,
+				C19C3236274CC5C200DE57F2 /* GameViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C19C3258274CDBF000DE57F2 /* GameViewModel.swift in Sources */,
 				C19C324B274CC93F00DE57F2 /* GamePresenter.swift in Sources */,
 				C19C3233274CC5C200DE57F2 /* GameViewController.swift in Sources */,
 				C19C324D274CC94B00DE57F2 /* GameProtocols.swift in Sources */,
@@ -239,12 +251,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C19C3234274CC5C200DE57F2 /* Main.storyboard */ = {
+		C19C3234274CC5C200DE57F2 /* GameViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C19C3235274CC5C200DE57F2 /* Base */,
 			);
-			name = Main.storyboard;
+			name = GameViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		C19C3239274CC5C800DE57F2 /* LaunchScreen.storyboard */ = {
@@ -386,7 +398,6 @@
 				INFOPLIST_FILE = CutTheShape/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -414,7 +425,6 @@
 				INFOPLIST_FILE = CutTheShape/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
