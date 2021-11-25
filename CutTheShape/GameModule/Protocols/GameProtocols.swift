@@ -53,5 +53,6 @@ protocol GameInteractorProtocol: AnyObject {
 // MARK: protocol - GameLocalDataManagerProtocol
 protocol GameLocalDataManagerProtocol: AnyObject {
     func obtainGameView() -> GameViewModel
+    func obtainGameConfig() -> GameConfig?
 }
 

@@ -24,6 +24,8 @@ final class GameInteractor: GameInteractorProtocol {
     
     // MARK: Private Attributes
     private var secondsLeft: Int = 60
+    private var gameConfig: GameConfig?
+    private let defaultDifficulty: Dificulty = .easy
     
     // MARK: Init
     init(localDataManager: GameLocalDataManagerProtocol) {
@@ -32,7 +34,13 @@ final class GameInteractor: GameInteractorProtocol {
     
     // MARK: Obtain Configuration
     func obtainConfiguration() {
-        guard var viewModel: GameViewModel = localDataManager?.obtainGameView() else { return }
+        guard var viewModel: GameViewModel = localDataManager?.obtainGameView(),
+              let config: GameConfig = localDataManager?.obtainGameConfig() else {
+            // handle error of not getting config
+            return
+        }
+        gameConfig = config
+        setGame(dificulty: defaultDifficulty)
         viewModel.initialTimer = obtainMinutesFormat()
         presenter?.configureView(with: viewModel)
     }
@@ -71,5 +79,12 @@ final class GameInteractor: GameInteractorProtocol {
         gameTimer.invalidate()
         secondsLeft = 60
         presenter?.shouldUpdateTimer(time: obtainMinutesFormat())
+    }
+    
+    private func setGame(dificulty: Dificulty) {
+        guard let dificultyConfig: DificultyConfig = gameConfig?.dificulties.first(where: { config in
+            return config.dificulty == dificulty
+        }) else { return }
+        secondsLeft = dificultyConfig.timeCountdown
     }
 }

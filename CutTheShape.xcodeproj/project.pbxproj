@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C1711032274F5EB500E3BFAF /* UIColor++.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1711031274F5EB500E3BFAF /* UIColor++.swift */; };
+		C1711035274F87A400E3BFAF /* GameConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = C1711034274F87A400E3BFAF /* GameConfig.json */; };
+		C1711037274F8B2100E3BFAF /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1711036274F8B2100E3BFAF /* GameConfig.swift */; };
+		C171103A274F8BA800E3BFAF /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1711039274F8BA800E3BFAF /* JSONLoader.swift */; };
 		C19C322F274CC5C200DE57F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C322E274CC5C200DE57F2 /* AppDelegate.swift */; };
 		C19C3231274CC5C200DE57F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C3230274CC5C200DE57F2 /* SceneDelegate.swift */; };
 		C19C3233274CC5C200DE57F2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C3232274CC5C200DE57F2 /* GameViewController.swift */; };
@@ -24,6 +27,9 @@
 
 /* Begin PBXFileReference section */
 		C1711031274F5EB500E3BFAF /* UIColor++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor++.swift"; sourceTree = "<group>"; };
+		C1711034274F87A400E3BFAF /* GameConfig.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GameConfig.json; sourceTree = "<group>"; };
+		C1711036274F8B2100E3BFAF /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
+		C1711039274F8BA800E3BFAF /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
 		C19C322B274CC5C200DE57F2 /* CutTheShape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CutTheShape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C19C322E274CC5C200DE57F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C19C3230274CC5C200DE57F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +65,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C1711033274F855100E3BFAF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C1711038274F8B8C00E3BFAF /* GameConfig */,
+				C1711039274F8BA800E3BFAF /* JSONLoader.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C1711038274F8B8C00E3BFAF /* GameConfig */ = {
+			isa = PBXGroup;
+			children = (
+				C1711034274F87A400E3BFAF /* GameConfig.json */,
+				C1711036274F8B2100E3BFAF /* GameConfig.swift */,
+			);
+			path = GameConfig;
+			sourceTree = "<group>";
+		};
 		C19C3222274CC5C200DE57F2 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +102,7 @@
 		C19C322D274CC5C200DE57F2 /* CutTheShape */ = {
 			isa = PBXGroup;
 			children = (
+				C1711033274F855100E3BFAF /* Resources */,
 				C1711030274F5E9700E3BFAF /* Extensions */,
 				C19C3243274CC85400DE57F2 /* Delegates */,
 				C19C3242274CC7D200DE57F2 /* GameModule */,
@@ -237,6 +262,7 @@
 				C19C323B274CC5C800DE57F2 /* LaunchScreen.storyboard in Resources */,
 				C19C3238274CC5C800DE57F2 /* Assets.xcassets in Resources */,
 				C19C3236274CC5C200DE57F2 /* GameViewController.storyboard in Resources */,
+				C1711035274F87A400E3BFAF /* GameConfig.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,12 +274,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C19C3258274CDBF000DE57F2 /* GameViewModel.swift in Sources */,
+				C1711037274F8B2100E3BFAF /* GameConfig.swift in Sources */,
 				C19C324B274CC93F00DE57F2 /* GamePresenter.swift in Sources */,
 				C19C3233274CC5C200DE57F2 /* GameViewController.swift in Sources */,
 				C19C324D274CC94B00DE57F2 /* GameProtocols.swift in Sources */,
 				C19C322F274CC5C200DE57F2 /* AppDelegate.swift in Sources */,
 				C19C3231274CC5C200DE57F2 /* SceneDelegate.swift in Sources */,
 				C19C3250274CC96400DE57F2 /* GameLocalDataManager.swift in Sources */,
+				C171103A274F8BA800E3BFAF /* JSONLoader.swift in Sources */,
 				C19C3255274CC98100DE57F2 /* GameRouter.swift in Sources */,
 				C1711032274F5EB500E3BFAF /* UIColor++.swift in Sources */,
 				C19C3252274CC97000DE57F2 /* GameInteractor .swift in Sources */,

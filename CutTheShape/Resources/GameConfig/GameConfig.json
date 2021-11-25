@@ -1,0 +1,17 @@
+{
+    "dificulties" :
+    [
+        {
+            "dificulty" : "easy",
+            "timeCountdown" : 300
+        },
+        {
+            "dificulty" : "medium",
+            "timeCountdown" : 180
+        },
+        {
+            "dificulty" : "hard",
+            "timeCountdown" : 60
+        }
+    ]
+}

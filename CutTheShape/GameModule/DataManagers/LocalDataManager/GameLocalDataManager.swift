@@ -26,4 +26,14 @@ final class GameLocalDataManager: GameLocalDataManagerProtocol {
                              buttonBackGroundColor: UIColor(hex: 0x34C759),
                              initialButtonState: .start, initialTimer: String())
     }
+    
+    func obtainGameConfig() -> GameConfig? {
+        do {
+            guard let gameConfig: GameConfig = try JSONLoader.loadfile(withName: "GameConfig") else { return nil }
+            return gameConfig
+        } catch let error {
+            print(error)
+            return nil
+        }
+    }
 }
