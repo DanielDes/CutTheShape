@@ -6,7 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 struct GameViewModel {
-    var helloWorldText: String
+    var gameViewBackground: UIColor
+    var cornerRadius: CGFloat
+    var buttonBackGroundColor: UIColor
+    var initialButtonState: ButtonStates
+}
+
+enum ButtonStates: String {
+    case start = "Comenzar"
+    case finish = "Terminar"
 }

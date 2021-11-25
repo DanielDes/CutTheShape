@@ -20,7 +20,9 @@ final class GameViewController: UIViewController {
     // MARK: Attributes
     var presenter: GamePresenterProtocol?
     // MARK: Outlets
-    @IBOutlet private weak var helloWorldLabel: UILabel?
+    @IBOutlet weak var timerLabel: UILabel?
+    @IBOutlet weak var actionButton: UIButton?
+    @IBOutlet weak var mainGameView: UIView?
     
     // MARK: Static methods
     static func instantiateView() -> GameViewController {
@@ -36,12 +38,22 @@ final class GameViewController: UIViewController {
         super.viewDidLoad()
         presenter?.viewDidLoad()
     }
+    
+    // MARK: Actions
+    @IBAction func tapOnButton(_ sender: UIButton) {
+        
+    }
 }
 
 // MARK: - extension - GameViewProtocol
 extension GameViewController: GameViewProtocol {
     func configureView(with model: GameViewModel) {
-        guard let helloWorldLabel: UILabel = helloWorldLabel else { return }
-        helloWorldLabel.text = model.helloWorldText
+        mainGameView?.backgroundColor = model.gameViewBackground
+        actionButton?.setTitle(model.initialButtonState.rawValue, for: .normal)
+        actionButton?.backgroundColor = model.buttonBackGroundColor
+        actionButton?.layer.masksToBounds = true
+        actionButton?.layer.cornerRadius = model.cornerRadius
+        mainGameView?.layer.masksToBounds = true
+        mainGameView?.layer.cornerRadius = model.cornerRadius
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 /*
     Explanation
         The local data manager is the manager who provides created models
@@ -20,6 +21,9 @@ import Foundation
 final class GameLocalDataManager: GameLocalDataManagerProtocol {
     // MARK: Methods
     func obtainGameView() -> GameViewModel {
-        return GameViewModel(helloWorldText: "Hello there!")
+        return GameViewModel(gameViewBackground: UIColor(hex: 0xEDE4A3),
+                             cornerRadius: 10.0,
+                             buttonBackGroundColor: UIColor(hex: 0x34C759),
+                             initialButtonState: .start)
     }
 }

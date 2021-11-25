@@ -16,24 +16,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvJ-qP-WwJ">
-                                <rect key="frame" x="121" y="438" width="172" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehb-sx-m33">
+                                <rect key="frame" x="176" y="69" width="62.5" height="37.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grw-yV-a3a">
+                                <rect key="frame" x="79.5" y="146.5" width="255" height="64"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button">
+                                    <color key="baseBackgroundColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="tapOnButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wq2-yn-0rD"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSg-em-4tv">
+                                <rect key="frame" x="20" y="230.5" width="374" height="611.5"/>
+                                <color key="backgroundColor" red="0.92941176470588238" green="0.89411764705882346" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OvJ-qP-WwJ" secondAttribute="bottom" constant="403" id="001-fz-Pcq"/>
-                            <constraint firstItem="OvJ-qP-WwJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="121" id="7Wa-L2-kr4"/>
-                            <constraint firstItem="OvJ-qP-WwJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="394" id="GgZ-xp-c1v"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OvJ-qP-WwJ" secondAttribute="trailing" constant="121" id="dXc-oU-f9P"/>
+                            <constraint firstItem="grw-yV-a3a" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FaS-KJ-wxV"/>
+                            <constraint firstItem="grw-yV-a3a" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.615942" id="NMy-Wh-c70"/>
+                            <constraint firstItem="wSg-em-4tv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QkC-fB-Rr4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wSg-em-4tv" secondAttribute="trailing" constant="20" id="RVn-Y1-J1G"/>
+                            <constraint firstItem="wSg-em-4tv" firstAttribute="top" secondItem="grw-yV-a3a" secondAttribute="bottom" constant="20" id="YaW-7t-Vi1"/>
+                            <constraint firstItem="grw-yV-a3a" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0714286" id="cqv-mo-bdg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wSg-em-4tv" secondAttribute="bottom" constant="20" id="tHZ-eQ-HkK"/>
+                            <constraint firstItem="grw-yV-a3a" firstAttribute="top" secondItem="Ehb-sx-m33" secondAttribute="bottom" constant="40" id="w9v-Nm-V9V"/>
+                            <constraint firstItem="Ehb-sx-m33" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="wCV-Er-t19"/>
+                            <constraint firstItem="Ehb-sx-m33" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="yad-Or-hg9"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="helloWorldLabel" destination="OvJ-qP-WwJ" id="EJf-t0-OVT"/>
+                        <outlet property="actionButton" destination="grw-yV-a3a" id="RoB-mz-aJH"/>
+                        <outlet property="mainGameView" destination="wSg-em-4tv" id="4YV-0i-jmE"/>
+                        <outlet property="timerLabel" destination="Ehb-sx-m33" id="YmW-dA-AyZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
