@@ -24,6 +24,6 @@ final class GameLocalDataManager: GameLocalDataManagerProtocol {
         return GameViewModel(gameViewBackground: UIColor(hex: 0xEDE4A3),
                              cornerRadius: 10.0,
                              buttonBackGroundColor: UIColor(hex: 0x34C759),
-                             initialButtonState: .start)
+                             initialButtonState: .start, initialTimer: String())
     }
 }

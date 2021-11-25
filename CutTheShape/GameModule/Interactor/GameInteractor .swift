@@ -20,6 +20,10 @@ final class GameInteractor: GameInteractorProtocol {
     // MARK: Atributes
     weak var presenter: GameInteractorOutputProtocol?
     var localDataManager: GameLocalDataManagerProtocol?
+    var gameTimer: Timer = Timer()
+    
+    // MARK: Private Attributes
+    private var secondsLeft: Int = 60
     
     // MARK: Init
     init(localDataManager: GameLocalDataManagerProtocol) {
@@ -28,7 +32,44 @@ final class GameInteractor: GameInteractorProtocol {
     
     // MARK: Obtain Configuration
     func obtainConfiguration() {
-        guard let viewModel: GameViewModel = localDataManager?.obtainGameView() else { return }
+        guard var viewModel: GameViewModel = localDataManager?.obtainGameView() else { return }
+        viewModel.initialTimer = obtainMinutesFormat()
         presenter?.configureView(with: viewModel)
+    }
+    
+    func startGame() {
+        startTimer()
+    }
+    
+    func finishGame() {
+        resetTimer()
+    }
+    
+    // MARK: Game Logic
+    func startTimer() {
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateCountdown() {
+        guard secondsLeft > 0 else {
+            resetTimer()
+            presenter?.timeDidEnded()
+            return
+        }
+        secondsLeft -= 1
+        presenter?.shouldUpdateTimer(time: obtainMinutesFormat())
+    }
+    
+    // MARK: Other Methods
+    private func obtainMinutesFormat() -> String {
+        let minutes: Int = (secondsLeft % 3600) / 60
+        let seconds: Int = (secondsLeft % 3600) % 60
+        return "\(minutes):\(seconds < 10 ? "0" + seconds.description : seconds.description)"
+    }
+    
+    private func resetTimer() {
+        gameTimer.invalidate()
+        secondsLeft = 60
+        presenter?.shouldUpdateTimer(time: obtainMinutesFormat())
     }
 }

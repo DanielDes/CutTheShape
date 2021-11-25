@@ -12,10 +12,11 @@ struct GameViewModel {
     var gameViewBackground: UIColor
     var cornerRadius: CGFloat
     var buttonBackGroundColor: UIColor
-    var initialButtonState: ButtonStates
+    var initialButtonState: ButtonState
+    var initialTimer: String
 }
 
-enum ButtonStates: String {
+enum ButtonState: String {
     case start = "Comenzar"
     case finish = "Terminar"
 }

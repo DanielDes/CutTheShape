@@ -23,6 +23,9 @@ final class GameViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel?
     @IBOutlet weak var actionButton: UIButton?
     @IBOutlet weak var mainGameView: UIView?
+    // MARK: Attributes
+    private var buttonState: ButtonState = .start
+    private var viewModel: GameViewModel?
     
     // MARK: Static methods
     static func instantiateView() -> GameViewController {
@@ -41,7 +44,19 @@ final class GameViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func tapOnButton(_ sender: UIButton) {
-        
+        switch buttonState {
+        case .start:
+            presenter?.shouldStartGame()
+            updateButton(withState: .finish)
+        case .finish:
+            presenter?.shouldFinishGame()
+            updateButton(withState: .start)
+        }
+    }
+    
+    private func updateButton(withState state: ButtonState) {
+        buttonState = state
+        actionButton?.setTitle(state.rawValue, for: .normal)
     }
 }
 
@@ -55,5 +70,18 @@ extension GameViewController: GameViewProtocol {
         actionButton?.layer.cornerRadius = model.cornerRadius
         mainGameView?.layer.masksToBounds = true
         mainGameView?.layer.cornerRadius = model.cornerRadius
+        updateTimer(time: model.initialTimer)
+        buttonState = model.initialButtonState
+        viewModel = model
+    }
+    
+    func updateTimer(time: String) {
+        timerLabel?.text = time
+    }
+    
+    func restartView() {
+        guard let model: GameViewModel = viewModel else { return }
+        updateButton(withState: model.initialButtonState)
+        updateTimer(time: model.initialTimer)
     }
 }

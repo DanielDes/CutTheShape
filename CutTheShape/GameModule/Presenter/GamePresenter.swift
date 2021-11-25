@@ -38,11 +38,26 @@ final class GamePresenter: GamePresenterProtocol {
     func viewDidLoad() {
         interactor?.obtainConfiguration()
     }
+    
+    func shouldStartGame() {
+        interactor?.startGame()
+    }
+    
+    func shouldFinishGame() {
+        interactor?.finishGame()
+    }
 }
 
 // MARK: - extension - GamePresenterInteractorOutputProtocol
 extension GamePresenter: GameInteractorOutputProtocol {
     func configureView(with model: GameViewModel) {
         view?.configureView(with: model)
+    }
+    
+    func shouldUpdateTimer(time: String) {
+        view?.updateTimer(time: time)
+    }
+    func timeDidEnded() {
+        view?.restartView()
     }
 }
