@@ -25,6 +25,7 @@ final class GameInteractor: GameInteractorProtocol {
     // MARK: Private Attributes
     private var secondsLeft: Int = 60
     private var gameConfig: GameConfig?
+    private var currentDificultyConfig: DificultyConfig?
     private let defaultDifficulty: Dificulty = .easy
     
     // MARK: Init
@@ -77,7 +78,7 @@ final class GameInteractor: GameInteractorProtocol {
     
     private func resetTimer() {
         gameTimer.invalidate()
-        secondsLeft = 60
+        secondsLeft = currentDificultyConfig?.timeCountdown ?? 300
         presenter?.shouldUpdateTimer(time: obtainMinutesFormat())
     }
     
@@ -86,5 +87,6 @@ final class GameInteractor: GameInteractorProtocol {
             return config.dificulty == dificulty
         }) else { return }
         secondsLeft = dificultyConfig.timeCountdown
+        currentDificultyConfig = dificultyConfig
     }
 }
