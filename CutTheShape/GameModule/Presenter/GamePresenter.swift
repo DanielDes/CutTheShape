@@ -46,11 +46,13 @@ final class GamePresenter: GamePresenterProtocol {
         interactor?.startGame()
         view?.updateButton(withState: .finish)
         view?.enableInteraction(true)
+        view?.enableConfigButton(false)
     }
     
     func shouldFinishGame() {
         view?.updateButton(withState: .start)
         view?.enableInteraction(false)
+        view?.enableConfigButton(true)
         let trueValues: [Bool] = pointResultsCaptured.values.filter { Value in
             return Value
         }

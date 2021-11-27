@@ -78,6 +78,7 @@
                     <connections>
                         <outlet property="actionButton" destination="grw-yV-a3a" id="RoB-mz-aJH"/>
                         <outlet property="canvasImageView" destination="7dc-Ii-xDf" id="OHO-iI-Jbd"/>
+                        <outlet property="configButton" destination="XTJ-2A-2Jv" id="gn8-39-FEn"/>
                         <outlet property="mainGameView" destination="wSg-em-4tv" id="4YV-0i-jmE"/>
                         <outlet property="timerLabel" destination="Ehb-sx-m33" id="YmW-dA-AyZ"/>
                     </connections>

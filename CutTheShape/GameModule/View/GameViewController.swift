@@ -24,6 +24,7 @@ final class GameViewController: UIViewController {
     @IBOutlet weak var actionButton: UIButton?
     @IBOutlet weak var mainGameView: UIView?
     @IBOutlet weak var canvasImageView: CanvaView?
+    @IBOutlet weak var configButton: UIButton?
     // MARK: Attributes
     private var buttonState: ButtonState = .start
     private var viewModel: GameViewModel?
@@ -68,6 +69,10 @@ final class GameViewController: UIViewController {
 
     func enableInteraction(_ interaction: Bool) {
         canvasImageView?.isUserInteractionEnabled = interaction
+    }
+
+    func enableConfigButton(_ interaction: Bool) {
+        configButton?.isEnabled = interaction
     }
 }
 

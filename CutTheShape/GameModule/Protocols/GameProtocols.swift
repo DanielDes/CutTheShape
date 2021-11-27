@@ -25,6 +25,7 @@ protocol GameViewProtocol: UIViewController {
     func restartView()
     func updateButton(withState state: ButtonState)
     func enableInteraction(_ interaction: Bool)
+    func enableConfigButton(_ interaction: Bool)
 }
 
 // MARK: protocol - GamePresenterProtocol

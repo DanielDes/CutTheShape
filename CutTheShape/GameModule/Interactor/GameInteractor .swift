@@ -27,13 +27,13 @@ final class GameInteractor: GameInteractorProtocol {
     private var secondsLeft: Int = 60
     private var gameConfig: GameConfig?
     private var currentDificultyConfig: DificultyConfig?
-    private let defaultDifficulty: Dificulty = .medium
+    private let defaultDifficulty: Dificulty = .easy
     private var currentShapeIndex: Int = 0
     private var canvaBound: CGRect?
     // MARK: Score
     private var requiredScoreToWin: Int = 0
-    private var uperScoreLimit: Int = 3000
-    private var underScoreLimit: Int = 1000
+    private var uperScoreLimit: Int = 1500
+    private var underScoreLimit: Int = 800
     
     // MARK: Init
     init(localDataManager: GameLocalDataManagerProtocol) {
@@ -75,6 +75,8 @@ final class GameInteractor: GameInteractorProtocol {
         setGame(dificulty: dificultyConfig)
         presenter?.shouldUpdateTimer(time: obtainMinutesFormat())
         presenter?.configureGame(with: gameModel)
+        resetTimer()
+        
     }
     
     func startGame() {
