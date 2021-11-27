@@ -40,9 +40,12 @@ final class GameViewController: UIViewController {
     // MARK: View Controller Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        canvasImageView?.isUserInteractionEnabled = true
-        canvasImageView?.configureView()
-        presenter?.viewDidLoad()
+        guard let canvasImageView = canvasImageView else {
+            return
+        }
+        canvasImageView.isUserInteractionEnabled = true
+        canvasImageView.configureView()
+        presenter?.viewDidLoad(canvaBound: canvasImageView.bounds)
     }
     
     // MARK: Actions
@@ -79,7 +82,9 @@ extension GameViewController: GameViewProtocol {
     }
 
     func configureGame(with model: GameModel) {
-        guard let canvasImageView: CanvaView = self.canvasImageView else { return }
+        guard let canvasImageView: CanvaView = self.canvasImageView,
+              let presenter: GamePresenter = presenter as? GamePresenter else { return }
+        canvasImageView.delegate = presenter
         canvasImageView.draw(path: model.brackGroundShapePath)
         canvasImageView.draw(path: model.shape.innerBezierpath)
         canvasImageView.draw(path: model.shape.outerShapePath)

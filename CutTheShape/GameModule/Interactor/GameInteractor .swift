@@ -36,11 +36,11 @@ final class GameInteractor: GameInteractorProtocol {
     }
     
     // MARK: Obtain Configuration
-    func obtainConfiguration() {
+    func obtainConfiguration(canvaBound: CGRect) {
         guard var viewModel: GameViewModel = localDataManager?.obtainGameView(),
               let config: GameConfig = localDataManager?.obtainGameConfig(),
               let dificultyConfig: DificultyConfig = getConfig(of: defaultDifficulty, from: config),
-              let gameModel: GameModel = localDataManager?.createGameModel(with: dificultyConfig)
+              let gameModel: GameModel = localDataManager?.createGameModel(with: dificultyConfig, canvaBounds: canvaBound)
         else {
             // handle error of not getting config
             return

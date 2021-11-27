@@ -37,14 +37,14 @@ final class GameLocalDataManager: GameLocalDataManagerProtocol {
         }
     }
 
-    func createGameModel(with dificulty: DificultyConfig) -> GameModel? {
+    func createGameModel(with dificulty: DificultyConfig, canvaBounds: CGRect) -> GameModel? {
         let shapeBuilder: BezierPathBuilder = BezierPathBuilder()
-        guard let outerShape: UIBezierPath = shapeBuilder.build(shape: dificulty.shape, type: ShapeType.outer),
-              let innerShape: UIBezierPath = shapeBuilder.build(shape: dificulty.shape, type: ShapeType.inner) else { return nil }
+        guard let outerShape: UIBezierPath = shapeBuilder.build(shape: dificulty.shape, type: ShapeType.outer, bound: canvaBounds),
+              let innerShape: UIBezierPath = shapeBuilder.build(shape: dificulty.shape, type: ShapeType.inner, bound: canvaBounds) else { return nil }
         let shape: ShapeModel = ShapeModel(outerShapePath:
                                             outerShape,
                                            innerBezierpath:
                                             innerShape)
-        return GameModel(brackGroundShapePath: shapeBuilder.buildBackgroundShape(), shape: shape)
+        return GameModel(brackGroundShapePath: shapeBuilder.buildBackgroundShape(bound: canvaBounds), shape: shape)
     }
 }

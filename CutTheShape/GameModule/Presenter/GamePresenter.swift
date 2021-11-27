@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /*
     Explanation
@@ -24,6 +25,7 @@ final class GamePresenter: GamePresenterProtocol {
     var interactor: GameInteractorProtocol?
     var router: GameRouterProtocol?
     weak var view: GameViewProtocol?
+    var gameModel: GameModel?
     
     // MARK: Init
     init(view: GameViewProtocol, interactor: GameInteractorProtocol, router: GameRouterProtocol) {
@@ -35,8 +37,8 @@ final class GamePresenter: GamePresenterProtocol {
     }
     
     // MARK: Methods
-    func viewDidLoad() {
-        interactor?.obtainConfiguration()
+    func viewDidLoad(canvaBound: CGRect) {
+        interactor?.obtainConfiguration(canvaBound: canvaBound)
     }
     
     func shouldStartGame() {
@@ -55,6 +57,7 @@ extension GamePresenter: GameInteractorOutputProtocol {
     }
 
     func configureGame(with model: GameModel) {
+        gameModel = model
         view?.configureGame(with: model)
     }
     
@@ -63,5 +66,21 @@ extension GamePresenter: GameInteractorOutputProtocol {
     }
     func timeDidEnded() {
         view?.restartView()
+    }
+}
+
+extension GamePresenter: GameCanvaDelegate {
+    func didDraw(toPoint point: CGPoint) {
+        guard let gameModel: GameModel = gameModel else {
+            return
+        }
+        print("Point is inside of innerShape:  \(gameModel.shape.innerBezierpath.contains(point))")
+        print("Point is inside of outerShape:  \(gameModel.shape.outerShapePath.contains(point))")
+        print("Point is inside of backgroundShape:  \(gameModel.brackGroundShapePath.contains(point))")
+    }
+
+    func shouldDraw(fromPoint point: CGPoint) -> Bool {
+        guard let gameModel: GameModel = gameModel else { return false }
+        return gameModel.brackGroundShapePath.contains(point)
     }
 }

@@ -9,36 +9,33 @@ import Foundation
 import UIKit
 
 class BezierPathBuilder {
-    func build(shape: Shape, type: ShapeType) -> UIBezierPath? {
+    func build(shape: Shape, type: ShapeType, bound: CGRect) -> UIBezierPath? {
         switch shape {
         case .square:
-            return buildSquareShape(type: type)
+            return buildSquareShape(type: type, bound: bound)
         case .triangle:
-            return buildTrianquelShape(type: type)
+            return buildTrianquelShape(type: type, bound: bound)
         case .circle:
-            return buildCircleShape(type: type)
+            return buildCircleShape(type: type, bound: bound)
         case .unknown:
             return nil
         }
     }
 
-    func buildBackgroundShape() -> UIBezierPath {
-        let path: UIBezierPath = UIBezierPath()
-        path.move(to: CGPoint.zero)
-        path.addLine(to: CGPoint(x: 100, y: 100))
-        return path
+    func buildBackgroundShape(bound: CGRect) -> UIBezierPath {
+        UIBezierPath(arcCenter: CGPoint(x: bound.width * 0.5, y: bound.height * 0.5), radius: 150, startAngle: CGFloat(0), endAngle: CGFloat.pi * 2, clockwise: true)
     }
 
-    private func buildSquareShape(type: ShapeType) -> UIBezierPath {
-        return UIBezierPath(arcCenter: CGPoint(x: 0, y: 0), radius: 100, startAngle: CGFloat(0), endAngle: CGFloat.pi * 2, clockwise: true)
+    private func buildSquareShape(type: ShapeType, bound: CGRect) -> UIBezierPath {
+        return UIBezierPath(arcCenter: CGPoint(x: bound.width * 0.5, y: bound.height * 0.5), radius: 100, startAngle: CGFloat(0), endAngle: CGFloat.pi * 2, clockwise: true)
     }
 
-    private func buildTrianquelShape(type: ShapeType) -> UIBezierPath {
-        return UIBezierPath(arcCenter: CGPoint(x: 0, y: 0), radius: 100, startAngle: CGFloat(0), endAngle: CGFloat.pi * 2, clockwise: true)
+    private func buildTrianquelShape(type: ShapeType, bound: CGRect) -> UIBezierPath {
+        return UIBezierPath(arcCenter: CGPoint(x: bound.width * 0.5, y: bound.height * 0.5), radius: 100, startAngle: CGFloat(0), endAngle: CGFloat.pi * 2, clockwise: true)
     }
 
-    private func buildCircleShape(type: ShapeType) -> UIBezierPath {
-        return UIBezierPath(arcCenter: CGPoint(x: 0, y: 0), radius: 100, startAngle: CGFloat(0), endAngle: CGFloat.pi * 2, clockwise: true)
+    private func buildCircleShape(type: ShapeType, bound: CGRect) -> UIBezierPath {
+        return UIBezierPath(arcCenter: CGPoint(x: bound.width * 0.5, y: bound.height * 0.5), radius: 100, startAngle: CGFloat(0), endAngle: CGFloat.pi * 2, clockwise: true)
     }
 }
 

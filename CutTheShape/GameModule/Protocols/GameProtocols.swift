@@ -29,7 +29,7 @@ protocol GamePresenterProtocol: AnyObject {
     var router: GameRouterProtocol? { get set }
     var view: GameViewProtocol? { get set }
     // Methods
-    func viewDidLoad()
+    func viewDidLoad(canvaBound: CGRect)
     func shouldStartGame()
     func shouldFinishGame()
 }
@@ -47,7 +47,7 @@ protocol GameInteractorProtocol: AnyObject {
     var presenter: GameInteractorOutputProtocol? { get set }
     var localDataManager: GameLocalDataManagerProtocol? { get set }
     //Methods
-    func obtainConfiguration()
+    func obtainConfiguration(canvaBound: CGRect)
     func startGame()
     func finishGame()
 }
@@ -56,6 +56,11 @@ protocol GameInteractorProtocol: AnyObject {
 protocol GameLocalDataManagerProtocol: AnyObject {
     func obtainGameView() -> GameViewModel
     func obtainGameConfig() -> GameConfig?
-    func createGameModel(with dificulty: DificultyConfig) -> GameModel?
+    func createGameModel(with dificulty: DificultyConfig, canvaBounds: CGRect) -> GameModel?
+}
+
+protocol GameCanvaDelegate: AnyObject {
+    func didDraw(toPoint point: CGPoint)
+    func shouldDraw(fromPoint point: CGPoint) -> Bool
 }
 

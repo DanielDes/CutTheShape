@@ -14,6 +14,7 @@ class CanvaView: UIImageView {
     private var opacity: CGFloat = 1.0
     private var swiped: Bool = false
     private var temporalView: UIImageView = UIImageView()
+    var delegate: GameCanvaDelegate?
 
     func configureView() {
         temporalView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +63,9 @@ class CanvaView: UIImageView {
 
     private func drawLine(from fromPoint: CGPoint, to toPoint: CGPoint) {
         UIGraphicsBeginImageContext(self.frame.size)
-        guard let context: CGContext = UIGraphicsGetCurrentContext() else { return }
+        guard let context: CGContext = UIGraphicsGetCurrentContext(),
+              let delegate: GameCanvaDelegate = delegate,
+              delegate.shouldDraw(fromPoint: fromPoint) else { return }
         temporalView.image?.draw(in: self.bounds)
         context.move(to: fromPoint)
         context.addLine(to: toPoint)
@@ -73,5 +76,6 @@ class CanvaView: UIImageView {
         temporalView.image = UIGraphicsGetImageFromCurrentImageContext()
         temporalView.alpha = opacity
         UIGraphicsEndImageContext()
+        delegate.didDraw(toPoint: toPoint)
     }
 }
