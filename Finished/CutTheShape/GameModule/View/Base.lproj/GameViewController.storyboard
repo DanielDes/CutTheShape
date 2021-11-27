@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -65,7 +65,6 @@
                             <constraint firstItem="wSg-em-4tv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QkC-fB-Rr4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wSg-em-4tv" secondAttribute="trailing" constant="20" id="RVn-Y1-J1G"/>
                             <constraint firstItem="wSg-em-4tv" firstAttribute="top" secondItem="grw-yV-a3a" secondAttribute="bottom" constant="20" id="YaW-7t-Vi1"/>
-                            <constraint firstItem="grw-yV-a3a" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0714286" id="cqv-mo-bdg"/>
                             <constraint firstItem="XTJ-2A-2Jv" firstAttribute="top" secondItem="Ehb-sx-m33" secondAttribute="top" id="dI1-Wq-SGu"/>
                             <constraint firstItem="wSg-em-4tv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.682478" id="ikg-AM-Im9"/>
                             <constraint firstItem="Ehb-sx-m33" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0418527" id="lTg-wG-ees"/>
