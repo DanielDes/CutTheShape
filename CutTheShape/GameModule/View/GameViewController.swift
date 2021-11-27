@@ -23,6 +23,7 @@ final class GameViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel?
     @IBOutlet weak var actionButton: UIButton?
     @IBOutlet weak var mainGameView: UIView?
+    @IBOutlet weak var canvasImageView: CanvaView?
     // MARK: Attributes
     private var buttonState: ButtonState = .start
     private var viewModel: GameViewModel?
@@ -39,6 +40,8 @@ final class GameViewController: UIViewController {
     // MARK: View Controller Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        canvasImageView?.isUserInteractionEnabled = true
+        canvasImageView?.configureView()
         presenter?.viewDidLoad()
     }
     
@@ -74,6 +77,13 @@ extension GameViewController: GameViewProtocol {
         buttonState = model.initialButtonState
         viewModel = model
     }
+
+    func configureGame(with model: GameModel) {
+        guard let canvasImageView: CanvaView = self.canvasImageView else { return }
+        canvasImageView.draw(path: model.brackGroundShapePath)
+        canvasImageView.draw(path: model.shape.innerBezierpath)
+        canvasImageView.draw(path: model.shape.outerShapePath)
+    }
     
     func updateTimer(time: String) {
         timerLabel?.text = time
@@ -84,4 +94,5 @@ extension GameViewController: GameViewProtocol {
         updateButton(withState: model.initialButtonState)
         updateTimer(time: model.initialTimer)
     }
+
 }

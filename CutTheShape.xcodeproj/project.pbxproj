@@ -23,6 +23,9 @@
 		C19C3252274CC97000DE57F2 /* GameInteractor .swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C3251274CC97000DE57F2 /* GameInteractor .swift */; };
 		C19C3255274CC98100DE57F2 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C3254274CC98100DE57F2 /* GameRouter.swift */; };
 		C19C3258274CDBF000DE57F2 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C3257274CDBF000DE57F2 /* GameViewModel.swift */; };
+		C823743427519FCF0081F964 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823743327519FCF0081F964 /* GameModel.swift */; };
+		C82374362751A5800081F964 /* BezierPathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82374352751A5800081F964 /* BezierPathBuilder.swift */; };
+		C82374382751D1AF0081F964 /* CanvaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82374372751D1AF0081F964 /* CanvaView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		C19C3251274CC97000DE57F2 /* GameInteractor .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameInteractor .swift"; sourceTree = "<group>"; };
 		C19C3254274CC98100DE57F2 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
 		C19C3257274CDBF000DE57F2 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		C823743327519FCF0081F964 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		C82374352751A5800081F964 /* BezierPathBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathBuilder.swift; sourceTree = "<group>"; };
+		C82374372751D1AF0081F964 /* CanvaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,7 @@
 			children = (
 				C1711038274F8B8C00E3BFAF /* GameConfig */,
 				C1711039274F8BA800E3BFAF /* JSONLoader.swift */,
+				C82374352751A5800081F964 /* BezierPathBuilder.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 			children = (
 				C19C3234274CC5C200DE57F2 /* GameViewController.storyboard */,
 				C19C3232274CC5C200DE57F2 /* GameViewController.swift */,
+				C82374372751D1AF0081F964 /* CanvaView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				C19C3257274CDBF000DE57F2 /* GameViewModel.swift */,
+				C823743327519FCF0081F964 /* GameModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -280,10 +289,13 @@
 				C19C324D274CC94B00DE57F2 /* GameProtocols.swift in Sources */,
 				C19C322F274CC5C200DE57F2 /* AppDelegate.swift in Sources */,
 				C19C3231274CC5C200DE57F2 /* SceneDelegate.swift in Sources */,
+				C82374362751A5800081F964 /* BezierPathBuilder.swift in Sources */,
 				C19C3250274CC96400DE57F2 /* GameLocalDataManager.swift in Sources */,
 				C171103A274F8BA800E3BFAF /* JSONLoader.swift in Sources */,
 				C19C3255274CC98100DE57F2 /* GameRouter.swift in Sources */,
 				C1711032274F5EB500E3BFAF /* UIColor++.swift in Sources */,
+				C823743427519FCF0081F964 /* GameModel.swift in Sources */,
+				C82374382751D1AF0081F964 /* CanvaView.swift in Sources */,
 				C19C3252274CC97000DE57F2 /* GameInteractor .swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

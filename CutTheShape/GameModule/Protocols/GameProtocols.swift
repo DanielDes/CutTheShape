@@ -18,6 +18,7 @@ protocol GameViewProtocol: UIViewController {
     var presenter: GamePresenterProtocol? { get set }
     // Methods
     func configureView(with model: GameViewModel)
+    func configureGame(with model: GameModel)
     func updateTimer(time: String)
     func restartView()
 }
@@ -36,6 +37,7 @@ protocol GamePresenterProtocol: AnyObject {
 // MARK: protocol - GameInteractorOutputProtocol
 protocol GameInteractorOutputProtocol: AnyObject {
     func configureView(with model: GameViewModel)
+    func configureGame(with model: GameModel)
     func shouldUpdateTimer(time: String)
     func timeDidEnded()
 }
@@ -54,5 +56,6 @@ protocol GameInteractorProtocol: AnyObject {
 protocol GameLocalDataManagerProtocol: AnyObject {
     func obtainGameView() -> GameViewModel
     func obtainGameConfig() -> GameConfig?
+    func createGameModel(with dificulty: DificultyConfig) -> GameModel?
 }
 

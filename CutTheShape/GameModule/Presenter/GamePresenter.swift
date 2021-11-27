@@ -53,6 +53,10 @@ extension GamePresenter: GameInteractorOutputProtocol {
     func configureView(with model: GameViewModel) {
         view?.configureView(with: model)
     }
+
+    func configureGame(with model: GameModel) {
+        view?.configureGame(with: model)
+    }
     
     func shouldUpdateTimer(time: String) {
         view?.updateTimer(time: time)

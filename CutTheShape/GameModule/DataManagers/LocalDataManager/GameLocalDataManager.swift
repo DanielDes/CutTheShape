@@ -36,4 +36,15 @@ final class GameLocalDataManager: GameLocalDataManagerProtocol {
             return nil
         }
     }
+
+    func createGameModel(with dificulty: DificultyConfig) -> GameModel? {
+        let shapeBuilder: BezierPathBuilder = BezierPathBuilder()
+        guard let outerShape: UIBezierPath = shapeBuilder.build(shape: dificulty.shape, type: ShapeType.outer),
+              let innerShape: UIBezierPath = shapeBuilder.build(shape: dificulty.shape, type: ShapeType.inner) else { return nil }
+        let shape: ShapeModel = ShapeModel(outerShapePath:
+                                            outerShape,
+                                           innerBezierpath:
+                                            innerShape)
+        return GameModel(brackGroundShapePath: shapeBuilder.buildBackgroundShape(), shape: shape)
+    }
 }

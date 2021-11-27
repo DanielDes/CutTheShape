@@ -16,6 +16,7 @@ struct GameConfig: Codable {
 struct DificultyConfig: Codable {
     let dificulty: Dificulty
     let timeCountdown: Int
+    let shape: Shape
 }
 
 enum Dificulty: String, Codable {
@@ -28,4 +29,16 @@ enum Dificulty: String, Codable {
         let type: String = try container.decode(String.self)
         self = Dificulty(rawValue: type) ?? .unknown
     }
+}
+
+enum Shape: String, Codable {
+  case square
+  case triangle
+  case circle
+  case unknown
+  init(from decoder: Decoder) throws {
+    let container: SingleValueDecodingContainer = try decoder.singleValueContainer()
+    let type: String = try container.decode(String.self)
+    self = Shape(rawValue: type) ?? .unknown
+  }
 }

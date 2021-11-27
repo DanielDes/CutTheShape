@@ -3,15 +3,18 @@
     [
         {
             "dificulty" : "easy",
-            "timeCountdown" : 300
+            "timeCountdown" : 300,
+            "shape": "triangle"
         },
         {
             "dificulty" : "medium",
-            "timeCountdown" : 180
+            "timeCountdown" : 180,
+            "shape": "square"
         },
         {
             "dificulty" : "hard",
-            "timeCountdown" : 60
+            "timeCountdown" : 60,
+            "shape": "circle"
         }
     ]
 }

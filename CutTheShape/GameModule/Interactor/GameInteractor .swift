@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /*
     Explanation
@@ -27,6 +28,7 @@ final class GameInteractor: GameInteractorProtocol {
     private var gameConfig: GameConfig?
     private var currentDificultyConfig: DificultyConfig?
     private let defaultDifficulty: Dificulty = .easy
+    private var currentShapeIndex: Int = 0
     
     // MARK: Init
     init(localDataManager: GameLocalDataManagerProtocol) {
@@ -36,14 +38,18 @@ final class GameInteractor: GameInteractorProtocol {
     // MARK: Obtain Configuration
     func obtainConfiguration() {
         guard var viewModel: GameViewModel = localDataManager?.obtainGameView(),
-              let config: GameConfig = localDataManager?.obtainGameConfig() else {
+              let config: GameConfig = localDataManager?.obtainGameConfig(),
+              let dificultyConfig: DificultyConfig = getConfig(of: defaultDifficulty, from: config),
+              let gameModel: GameModel = localDataManager?.createGameModel(with: dificultyConfig)
+        else {
             // handle error of not getting config
             return
         }
         gameConfig = config
-        setGame(dificulty: defaultDifficulty)
+        setGame(dificulty: dificultyConfig)
         viewModel.initialTimer = obtainMinutesFormat()
         presenter?.configureView(with: viewModel)
+        presenter?.configureGame(with: gameModel)
     }
     
     func startGame() {
@@ -82,11 +88,14 @@ final class GameInteractor: GameInteractorProtocol {
         presenter?.shouldUpdateTimer(time: obtainMinutesFormat())
     }
     
-    private func setGame(dificulty: Dificulty) {
-        guard let dificultyConfig: DificultyConfig = gameConfig?.dificulties.first(where: { config in
-            return config.dificulty == dificulty
-        }) else { return }
-        secondsLeft = dificultyConfig.timeCountdown
-        currentDificultyConfig = dificultyConfig
+    private func setGame(dificulty: DificultyConfig) {
+        secondsLeft = dificulty.timeCountdown
+        currentDificultyConfig = dificulty
+    }
+
+    private func getConfig(of dificulty: Dificulty, from gameConfig: GameConfig) -> DificultyConfig? {
+        return gameConfig.dificulties.first { dificultyConfig in
+            return dificultyConfig.dificulty == dificulty
+        }
     }
 }
