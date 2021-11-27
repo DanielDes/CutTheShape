@@ -43,7 +43,6 @@ final class GameViewController: UIViewController {
         guard let canvasImageView = canvasImageView else {
             return
         }
-        canvasImageView.isUserInteractionEnabled = true
         canvasImageView.configureView()
         presenter?.viewDidLoad(canvaBound: canvasImageView.bounds)
     }
@@ -53,16 +52,18 @@ final class GameViewController: UIViewController {
         switch buttonState {
         case .start:
             presenter?.shouldStartGame()
-            updateButton(withState: .finish)
         case .finish:
             presenter?.shouldFinishGame()
-            updateButton(withState: .start)
         }
     }
     
-    private func updateButton(withState state: ButtonState) {
+    func updateButton(withState state: ButtonState) {
         buttonState = state
         actionButton?.setTitle(state.rawValue, for: .normal)
+    }
+
+    func enableInteraction(_ interaction: Bool) {
+        canvasImageView?.isUserInteractionEnabled = interaction
     }
 }
 

@@ -43,10 +43,14 @@ final class GamePresenter: GamePresenterProtocol {
     
     func shouldStartGame() {
         interactor?.startGame()
+        view?.updateButton(withState: .finish)
+        view?.enableInteraction(true)
     }
     
     func shouldFinishGame() {
         interactor?.finishGame()
+        view?.updateButton(withState: .start)
+        view?.enableInteraction(false)
     }
 }
 
