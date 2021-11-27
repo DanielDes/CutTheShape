@@ -47,17 +47,29 @@
                                     <constraint firstItem="7dc-Ii-xDf" firstAttribute="top" secondItem="wSg-em-4tv" secondAttribute="top" id="ps7-eE-eUc"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTJ-2A-2Jv">
+                                <rect key="frame" x="344" y="69" width="50" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="tapOnCOnfig:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tku-Bp-R5f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="grw-yV-a3a" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FaS-KJ-wxV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XTJ-2A-2Jv" secondAttribute="trailing" constant="20" id="HM2-Bo-Iez"/>
                             <constraint firstItem="grw-yV-a3a" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.615942" id="NMy-Wh-c70"/>
                             <constraint firstItem="wSg-em-4tv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QkC-fB-Rr4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wSg-em-4tv" secondAttribute="trailing" constant="20" id="RVn-Y1-J1G"/>
                             <constraint firstItem="wSg-em-4tv" firstAttribute="top" secondItem="grw-yV-a3a" secondAttribute="bottom" constant="20" id="YaW-7t-Vi1"/>
                             <constraint firstItem="grw-yV-a3a" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0714286" id="cqv-mo-bdg"/>
+                            <constraint firstItem="XTJ-2A-2Jv" firstAttribute="top" secondItem="Ehb-sx-m33" secondAttribute="top" id="dI1-Wq-SGu"/>
+                            <constraint firstItem="XTJ-2A-2Jv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0558036" id="nNh-m2-TKH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wSg-em-4tv" secondAttribute="bottom" constant="20" id="tHZ-eQ-HkK"/>
+                            <constraint firstItem="XTJ-2A-2Jv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.120773" id="tw8-ym-YxM"/>
                             <constraint firstItem="grw-yV-a3a" firstAttribute="top" secondItem="Ehb-sx-m33" secondAttribute="bottom" constant="40" id="w9v-Nm-V9V"/>
                             <constraint firstItem="Ehb-sx-m33" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="wCV-Er-t19"/>
                             <constraint firstItem="Ehb-sx-m33" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="yad-Or-hg9"/>
@@ -76,6 +88,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

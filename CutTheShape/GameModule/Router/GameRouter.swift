@@ -36,4 +36,13 @@ final class GameRouter: GameRouterProtocol {
         alertViewController.addAction(acceptAlertAction)
         view.show(alertViewController, sender: nil)
     }
+
+    func displayAlertSheet(title: String, message: String, actionSheetTitles: [String], handler: @escaping (UIAlertAction) -> Void, from view: UIViewController) {
+        let alertViewController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        actionSheetTitles.forEach { title in
+            let alertAction: UIAlertAction = UIAlertAction(title: title, style: .default, handler: handler)
+            alertViewController.addAction(alertAction)
+        }
+        view.show(alertViewController, sender: nil)
+    }
 }

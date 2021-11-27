@@ -56,6 +56,10 @@ final class GameViewController: UIViewController {
             presenter?.shouldFinishGame()
         }
     }
+
+    @IBAction func tapOnCOnfig(_ sender: UIButton) {
+        presenter?.didTapConfig()
+    }
     
     func updateButton(withState state: ButtonState) {
         buttonState = state

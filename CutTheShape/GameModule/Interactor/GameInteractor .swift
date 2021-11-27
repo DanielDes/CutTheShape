@@ -29,6 +29,7 @@ final class GameInteractor: GameInteractorProtocol {
     private var currentDificultyConfig: DificultyConfig?
     private let defaultDifficulty: Dificulty = .medium
     private var currentShapeIndex: Int = 0
+    private var canvaBound: CGRect?
     // MARK: Score
     private var requiredScoreToWin: Int = 0
     private var uperScoreLimit: Int = 3000
@@ -49,10 +50,30 @@ final class GameInteractor: GameInteractorProtocol {
             // handle error of not getting config
             return
         }
+        self.canvaBound = canvaBound
         gameConfig = config
         setGame(dificulty: dificultyConfig)
         viewModel.initialTimer = obtainMinutesFormat()
         presenter?.configureView(with: viewModel)
+        presenter?.configureGame(with: gameModel)
+    }
+
+    func obtainGameDificulties() -> [String]? {
+        guard let gameConfig = gameConfig else {
+            return nil
+        }
+        let dificultyTitles: [String] = gameConfig.dificulties.map { dificultiConfig in
+            return dificultiConfig.dificulty.rawValue.capitalized
+        }
+        return dificultyTitles
+    }
+
+    func changeDificulty(dificultyIndex: Int) {
+        guard let dificultyConfig: DificultyConfig = gameConfig?.dificulties[dificultyIndex],
+              let canvaBound: CGRect = canvaBound,
+              let gameModel: GameModel = localDataManager?.createGameModel(with: dificultyConfig, canvaBounds: canvaBound) else { return }
+        setGame(dificulty: dificultyConfig)
+        presenter?.shouldUpdateTimer(time: obtainMinutesFormat())
         presenter?.configureGame(with: gameModel)
     }
     

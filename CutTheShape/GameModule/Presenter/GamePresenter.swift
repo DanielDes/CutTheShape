@@ -56,6 +56,18 @@ final class GamePresenter: GamePresenterProtocol {
         }
         interactor?.finishGame(withScore: trueValues.count)
     }
+
+    func didTapConfig() {
+        guard let availableDificulties: [String] = interactor?.obtainGameDificulties(),
+        let view: UIViewController = view else { return }
+        router?.displayAlertSheet(title: "Dificulty Options", message: "Choose a dificulty", actionSheetTitles: availableDificulties, handler: { [weak self] action in
+            guard let self: GamePresenter = self,
+                  let title: String = action.title,
+                  let dificultyIndex: Int = availableDificulties.firstIndex(of: title) else { return }
+            self.view?.restartView()
+            self.interactor?.changeDificulty(dificultyIndex: dificultyIndex)
+        }, from: view)
+    }
 }
 
 // MARK: - extension - GamePresenterInteractorOutputProtocol
