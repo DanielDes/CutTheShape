@@ -27,8 +27,12 @@ final class GameInteractor: GameInteractorProtocol {
     private var secondsLeft: Int = 60
     private var gameConfig: GameConfig?
     private var currentDificultyConfig: DificultyConfig?
-    private let defaultDifficulty: Dificulty = .easy
+    private let defaultDifficulty: Dificulty = .medium
     private var currentShapeIndex: Int = 0
+    // MARK: Score
+    private var requiredScoreToWin: Int = 0
+    private var uperScoreLimit: Int = 3000
+    private var underScoreLimit: Int = 1000
     
     // MARK: Init
     init(localDataManager: GameLocalDataManagerProtocol) {
@@ -54,9 +58,17 @@ final class GameInteractor: GameInteractorProtocol {
     
     func startGame() {
         startTimer()
+        requiredScoreToWin = Int.random(in: underScoreLimit...uperScoreLimit)
     }
     
-    func finishGame() {
+    func finishGame(withScore score: Int) {
+        if score >= requiredScoreToWin {
+            presenter?.playerDidWin()
+        } else {
+            presenter?.playerDidLose()
+        }
+        print("Score: \(score)")
+        print("Required: \(requiredScoreToWin)")
         resetTimer()
     }
     
@@ -68,7 +80,7 @@ final class GameInteractor: GameInteractorProtocol {
     @objc func updateCountdown() {
         guard secondsLeft > 0 else {
             resetTimer()
-            presenter?.timeDidEnded()
+            presenter?.playerDidLose()
             return
         }
         secondsLeft -= 1

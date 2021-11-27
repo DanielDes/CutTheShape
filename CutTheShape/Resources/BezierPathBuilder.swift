@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class BezierPathBuilder {
-    private var innerShapeScale: Double = 0.98
+    private var innerShapeScale: Double = 0.95
     private var defaultRadius: CGFloat = 100
     private var squareSize: CGFloat = 150
     private var triangleSide: CGFloat = 150

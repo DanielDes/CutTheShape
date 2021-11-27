@@ -99,6 +99,7 @@ extension GameViewController: GameViewProtocol {
         guard let model: GameViewModel = viewModel else { return }
         updateButton(withState: model.initialButtonState)
         updateTimer(time: model.initialTimer)
+        canvasImageView?.image = nil
     }
 
 }

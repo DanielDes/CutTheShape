@@ -26,6 +26,7 @@ final class GamePresenter: GamePresenterProtocol {
     var router: GameRouterProtocol?
     weak var view: GameViewProtocol?
     var gameModel: GameModel?
+    private var pointResultsCaptured: [HashablePoint: Bool] = [HashablePoint : Bool]()
     
     // MARK: Init
     init(view: GameViewProtocol, interactor: GameInteractorProtocol, router: GameRouterProtocol) {
@@ -48,9 +49,12 @@ final class GamePresenter: GamePresenterProtocol {
     }
     
     func shouldFinishGame() {
-        interactor?.finishGame()
         view?.updateButton(withState: .start)
         view?.enableInteraction(false)
+        let trueValues: [Bool] = pointResultsCaptured.values.filter { Value in
+            return Value
+        }
+        interactor?.finishGame(withScore: trueValues.count)
     }
 }
 
@@ -68,8 +72,24 @@ extension GamePresenter: GameInteractorOutputProtocol {
     func shouldUpdateTimer(time: String) {
         view?.updateTimer(time: time)
     }
-    func timeDidEnded() {
+
+    func playerDidWin() {
+        restartGameState()
+        guard let view: UIViewController = view else { return }
+        router?.displayAlert(title: "You survived!", message: "You get to live another day!", from: view)
+    }
+
+    func playerDidLose() {
+        restartGameState()
+        guard let view: UIViewController = view else { return }
+        router?.displayAlert(title: "You died!", message: "No money for you!", from: view)
+    }
+
+    private func restartGameState() {
+        guard let gameModel: GameModel = gameModel else { return }
         view?.restartView()
+        view?.configureGame(with: gameModel)
+        pointResultsCaptured = [HashablePoint: Bool]()
     }
 }
 
@@ -78,13 +98,30 @@ extension GamePresenter: GameCanvaDelegate {
         guard let gameModel: GameModel = gameModel else {
             return
         }
-        print("Point is inside of innerShape:  \(gameModel.shape.innerBezierpath.contains(point))")
-        print("Point is inside of outerShape:  \(gameModel.shape.outerShapePath.contains(point))")
-        print("Point is inside of backgroundShape:  \(gameModel.brackGroundShapePath.contains(point))")
+        let hashablePoint: HashablePoint = HashablePoint(point: point)
+        if let _: Bool = pointResultsCaptured[hashablePoint] { // Point is already captured
+            print("point captured")
+            return
+        }
+        let pointResult: Bool = gameModel.shape.outerShapePath.contains(point) && !gameModel.shape.innerBezierpath.contains(point)
+        pointResultsCaptured.updateValue(pointResult, forKey: hashablePoint)
+
     }
 
     func shouldDraw(fromPoint point: CGPoint) -> Bool {
         guard let gameModel: GameModel = gameModel else { return false }
         return gameModel.brackGroundShapePath.contains(point)
+    }
+}
+
+struct HashablePoint: Hashable {
+    var x: CGFloat
+    var y: CGFloat
+}
+
+extension HashablePoint {
+    init(point: CGPoint) {
+        self.x = point.x
+        self.y = point.y
     }
 }

@@ -29,4 +29,11 @@ final class GameRouter: GameRouterProtocol {
                                                              router: router)
         return view
     }
+
+    func displayAlert(title: String, message: String, from view:  UIViewController) {
+        let alertViewController: UIAlertController = UIAlertController(title:title , message: message, preferredStyle: .alert)
+        let acceptAlertAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertViewController.addAction(acceptAlertAction)
+        view.show(alertViewController, sender: nil)
+    }
 }

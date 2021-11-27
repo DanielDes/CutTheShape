@@ -11,6 +11,7 @@ import UIKit
 // MARK: protocol - GameViewRouter
 protocol GameRouterProtocol: AnyObject {
     static func instantiateModule() -> UIViewController
+    func displayAlert(title: String, message: String, from: UIViewController)
 }
 
 // MARK: protocol - GameViewProtocol
@@ -41,7 +42,8 @@ protocol GameInteractorOutputProtocol: AnyObject {
     func configureView(with model: GameViewModel)
     func configureGame(with model: GameModel)
     func shouldUpdateTimer(time: String)
-    func timeDidEnded()
+    func playerDidWin()
+    func playerDidLose()
 }
 
 // MARK: protocol - GameInteractorProtocol
@@ -51,7 +53,7 @@ protocol GameInteractorProtocol: AnyObject {
     //Methods
     func obtainConfiguration(canvaBound: CGRect)
     func startGame()
-    func finishGame()
+    func finishGame(withScore score: Int)
 }
 
 // MARK: protocol - GameLocalDataManagerProtocol
