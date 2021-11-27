@@ -24,7 +24,10 @@ final class GameLocalDataManager: GameLocalDataManagerProtocol {
         return GameViewModel(gameViewBackground: UIColor(hex: 0xEDE4A3),
                              cornerRadius: 10.0,
                              buttonBackGroundColor: UIColor(hex: 0x34C759),
-                             initialButtonState: .start, initialTimer: String())
+                             initialButtonState: .start, initialTimer: String(),
+                             shapeBackgroundColor: UIColor(hex: 0xBF8522),
+                             outerShapeBackgroundColor: UIColor(hex: 0x573D0F),
+                             innerShapeBackgroundColor: UIColor(hex: 0x8C6118), brushModel: BrushModel(color: UIColor(hex: 0xEDE4A3), brushWidth: 10.0, opacity: 1.0))
     }
     
     func obtainGameConfig() -> GameConfig? {

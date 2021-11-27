@@ -25,14 +25,22 @@ class CanvaView: UIImageView {
         trailingAnchor.constraint(equalTo: temporalView.trailingAnchor).isActive = true
     }
 
-    func draw(path: UIBezierPath) {
+    func draw(path: UIBezierPath, fillColor: UIColor) {
         UIGraphicsBeginImageContext(self.frame.size)
         self.image?.draw(in: self.bounds,blendMode: .normal,alpha: 1.0)
-        UIColor.black.setStroke()
+        fillColor.setStroke()
+        fillColor.setFill()
         path.lineWidth = 2.0
         path.stroke()
+        path.fill()
         self.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+    }
+
+    func setBrushParameters(brushModel: BrushModel) {
+        color = brushModel.color
+        brushWidth = brushModel.brushWidth
+        opacity = brushModel.opacity
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

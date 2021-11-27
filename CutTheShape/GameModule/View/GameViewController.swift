@@ -93,11 +93,13 @@ extension GameViewController: GameViewProtocol {
 
     func configureGame(with model: GameModel) {
         guard let canvasImageView: CanvaView = self.canvasImageView,
-              let presenter: GamePresenter = presenter as? GamePresenter else { return }
+              let presenter: GamePresenter = presenter as? GamePresenter,
+              let viewModel: GameViewModel = viewModel else { return }
         canvasImageView.delegate = presenter
-        canvasImageView.draw(path: model.brackGroundShapePath)
-        canvasImageView.draw(path: model.shape.innerBezierpath)
-        canvasImageView.draw(path: model.shape.outerShapePath)
+        canvasImageView.draw(path: model.brackGroundShapePath, fillColor: viewModel.shapeBackgroundColor)
+        canvasImageView.draw(path: model.shape.outerShapePath, fillColor: viewModel.outerShapeBackgroundColor)
+        canvasImageView.draw(path: model.shape.innerBezierpath, fillColor: viewModel.innerShapeBackgroundColor)
+        canvasImageView.setBrushParameters(brushModel: viewModel.brushModel)
     }
     
     func updateTimer(time: String) {

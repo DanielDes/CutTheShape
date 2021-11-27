@@ -14,6 +14,16 @@ struct GameViewModel {
     var buttonBackGroundColor: UIColor
     var initialButtonState: ButtonState
     var initialTimer: String
+    var shapeBackgroundColor: UIColor
+    var outerShapeBackgroundColor: UIColor
+    var innerShapeBackgroundColor: UIColor
+    var brushModel: BrushModel
+}
+
+struct BrushModel {
+    var color: UIColor
+    var brushWidth: CGFloat
+    var opacity: CGFloat
 }
 
 enum ButtonState: String {
