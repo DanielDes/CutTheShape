@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8A897C552843C3A0004B5B86"
+               BuildableName = "CutTheShapeTests.xctest"
+               BlueprintName = "CutTheShapeTests"
+               ReferencedContainer = "container:CutTheShape.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8A897C622843C3AF004B5B86"
+               BuildableName = "CutTheShapeUITests.xctest"
+               BlueprintName = "CutTheShapeUITests"
+               ReferencedContainer = "container:CutTheShape.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
